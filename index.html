@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wähle eine Option</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+        }
+        .option {
+            width: 150px;
+            height: 150px;
+            background-color: #e4013a;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+        .option:hover {
+            background-color: #c3002e;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="option" onclick="location.href='tulpe.html'">🌷 Tulpe</div>
+    <div class="option" onclick="location.href='blatt.html'">🍃 Blatt</div>
+</div>
+
+</body>
+</html>
