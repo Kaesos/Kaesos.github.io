@@ -85,7 +85,6 @@
         if (index >= 0 && index < videoUrls.length) {
             videoPlayer.src = videoUrls[index];
             videoPlayer.load();
-            videoPlayer.play();
             stepTitle.innerText = `Tulpe - Schritt ${index + 1}`;
         }
     }
@@ -101,11 +100,13 @@
     function nextVideo() {
         currentIndex = (currentIndex + 1) % videoUrls.length;
         loadVideo(currentIndex);
+        videoPlayer.play();
     }
 
     function previousVideo() {
         currentIndex = (currentIndex - 1 + videoUrls.length) % videoUrls.length;
         loadVideo(currentIndex);
+        videoPlayer.play();
     }
 
     function stopVideo() {
@@ -113,6 +114,7 @@
         videoPlayer.currentTime = 0;
     }
 
+    // Lade das erste Video beim Start (ohne Autoplay für iOS)
     loadVideo(currentIndex);
 </script>
 

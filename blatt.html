@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blatt Video Player</title>
+    <title>blatt Video Player</title>
     <style>
         body {
             display: flex;
@@ -55,7 +55,7 @@
 <body>
 
     <div id="videoContainer">
-        <div id="stepTitle">Blatt - Schritt 1</div>
+        <div id="stepTitle">blatt - Schritt 1</div>
         <video id="videoPlayer" playsinline muted></video>
     </div>
 
@@ -73,7 +73,8 @@
         "Blatt Schritt 2.mp4",
         "Blatt Schritt 3.mp4",
         "Blatt Schritt 4.mp4",
-        "Blatt Schritt 5.mp4"
+        "Blatt Schritt 5.mp4",
+        "Blatt Schritt 6.mp4"
     ];
 
     let currentIndex = 0;
@@ -84,7 +85,6 @@
         if (index >= 0 && index < videoUrls.length) {
             videoPlayer.src = videoUrls[index];
             videoPlayer.load();
-            videoPlayer.play();
             stepTitle.innerText = `Blatt - Schritt ${index + 1}`;
         }
     }
@@ -100,11 +100,13 @@
     function nextVideo() {
         currentIndex = (currentIndex + 1) % videoUrls.length;
         loadVideo(currentIndex);
+        videoPlayer.play();
     }
 
     function previousVideo() {
         currentIndex = (currentIndex - 1 + videoUrls.length) % videoUrls.length;
         loadVideo(currentIndex);
+        videoPlayer.play();
     }
 
     function stopVideo() {
@@ -112,6 +114,7 @@
         videoPlayer.currentTime = 0;
     }
 
+    // Lade das erste Video beim Start (ohne Autoplay für iOS)
     loadVideo(currentIndex);
 </script>
 
