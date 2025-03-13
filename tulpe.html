@@ -56,9 +56,9 @@
 
     <div id="videoContainer">
         <div id="stepTitle">Tulpe - Schritt 1</div>
-        <video id="videoPlayer" controls></video>
+        <video id="videoPlayer" playsinline muted controls></video>
     </div>
-
+    <br>
     <div class="controls">
         <button onclick="previousVideo()">⏮ Letztes</button>
         <button onclick="togglePlayPause()">⏯ Start/Pause</button>
@@ -69,12 +69,11 @@
 
 <script>
     const videoUrls = [
-        "https://github.com/Kaesos/kaesos.github.io/blob/main/Blatt%20Schritt%201.mp4",
+        "Tulpe Schritt 1.mp4",
         "Tulpe Schritt 2.mp4",
         "Tulpe Schritt 3.mp4",
         "Tulpe Schritt 4.mp4",
-        "Tulpe Schritt 5.mp4",
-        "Tulpe Schritt 6.mp4"
+        "Tulpe Schritt 5.mp4"
     ];
 
     let currentIndex = 0;
@@ -85,7 +84,6 @@
         if (index >= 0 && index < videoUrls.length) {
             videoPlayer.src = videoUrls[index];
             videoPlayer.load();
-            videoPlayer.play();
             stepTitle.innerText = `Tulpe - Schritt ${index + 1}`;
         }
     }
@@ -101,11 +99,13 @@
     function nextVideo() {
         currentIndex = (currentIndex + 1) % videoUrls.length;
         loadVideo(currentIndex);
+        videoPlayer.play();
     }
 
     function previousVideo() {
         currentIndex = (currentIndex - 1 + videoUrls.length) % videoUrls.length;
         loadVideo(currentIndex);
+        videoPlayer.play();
     }
 
     function stopVideo() {
@@ -113,6 +113,7 @@
         videoPlayer.currentTime = 0;
     }
 
+    // Lade das erste Video beim Start (ohne Autoplay für iOS)
     loadVideo(currentIndex);
 </script>
 
